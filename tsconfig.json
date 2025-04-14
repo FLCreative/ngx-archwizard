@@ -20,10 +20,10 @@
       "dom"
     ],
     "paths": {
-      "angular-archwizard": [
+      "ngx-archwizard": [
         "dist"
       ],
-      "angular-archwizard/*": [
+      "ngx-archwizard/*": [
         "dist/*"
       ]
     }
