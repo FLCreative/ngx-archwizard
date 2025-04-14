@@ -87,6 +87,14 @@ export class WizardComponent implements AfterContentInit {
   public navBarDirection = 'left-to-right';
 
   /**
+   * The navigation mode used to navigate inside the wizard
+   */
+  @Input()
+  public set awNavigationMode(navigation: NavigationMode) {
+    this._navigation = navigation;
+  }
+
+  /**
    * The initially selected step, represented by its index
    * Beware: This initial default is only used if no wizard step has been enhanced with the `selected` directive
    */

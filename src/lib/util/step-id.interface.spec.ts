@@ -5,6 +5,7 @@ import { WizardComponent } from '../components/wizard.component';
 import { GoToStepDirective } from '../directives/go-to-step.directive';
 import { checkWizardState } from './test-utils';
 import {WizardStepComponent} from '../components/wizard-step.component';
+import { ConfigurableNavigationMode } from '../navigation/configurable-navigation-mode';
 
 @Component({
   selector: 'aw-test-wizard',
@@ -68,6 +69,9 @@ describe('StepId', () => {
 
     wizardTest = wizardTestFixture.componentInstance;
     wizard = wizardTest.wizard;
+
+    // Configure navigation to allow forward navigation
+    wizard.navigation = new ConfigurableNavigationMode('allow', 'allow');
 
     // wait a tick to ensure that the initialization has been completed
     tick();
