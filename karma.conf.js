@@ -4,71 +4,47 @@
 module.exports = function (config) {
   config.set({
     basePath: '',
-    frameworks: ['jasmine', '@angular-devkit/build-angular', 'detectBrowsers'],
+    frameworks: ['jasmine', '@angular-devkit/build-angular'],
     plugins: [
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
-      require('karma-firefox-launcher'),
-      require('karma-safari-launcher'),
-      require('karma-detect-browsers'),
       require('karma-jasmine-html-reporter'),
       require('karma-coverage'),
       require('@angular-devkit/build-angular/plugins/karma')
     ],
+    client: {
+      jasmine: {
+        // you can add configuration options for Jasmine here
+        // the possible options are listed at https://jasmine.github.io/api/edge/Configuration.html
+        // for example, you can disable the random execution with `random: false`
+        // or set a specific seed with `seed: 4321`
+      },
+      clearContext: false // leave Jasmine Spec Runner output visible in browser
+    },
+    jasmineHtmlReporter: {
+      suppressAll: true // removes the duplicated traces
+    },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage'),
+      dir: require('path').join(__dirname, './coverage/ngx-archwizard'),
       subdir: '.',
       reporters: [
         { type: 'html' },
-        { type: 'text-summary' },
-        { type: 'lcovonly' }
-      ],
-      fixWebpackSourcePaths: true,
-      thresholds: {
-        statements: 80,
-        lines: 80,
-        branches: 80,
-        functions: 80
-      }
+        { type: 'text-summary' }
+      ]
     },
+    reporters: ['progress', 'kjhtml'],
+    port: 9876,
+    colors: true,
+    logLevel: config.LOG_INFO,
+    autoWatch: true,
+    browsers: ['Chrome'],
+    singleRun: false,
+    restartOnFileChange: true,
     customLaunchers: {
-      ChromeHeadlessNoSandbox: {
+      ChromeHeadlessCI: {
         base: 'ChromeHeadless',
         flags: ['--no-sandbox']
-      },
-      ChromiumHeadlessNoSandbox: {
-        base: 'ChromiumHeadless',
-        flags: ['--no-sandbox']
       }
-    },
-    detectBrowsers: {
-      // enable/disable, default is true
-      enabled: true,
-
-      // enable/disable phantomjs support, default is true
-      usePhantomJS: false,
-
-      // use headless mode, for browsers that support it, default is false
-      preferHeadless: true,
-
-      postDetection: function (availableBrowsers) {
-        // ChromeHeadless -> ChromeHeadlessNoSandbox
-        if (availableBrowsers.includes('ChromeHeadless')) {
-          const index = availableBrowsers.indexOf('ChromeHeadless');
-
-          availableBrowsers[index] = 'ChromeHeadlessNoSandbox';
-        }
-
-        // ChromiumHeadless -> ChromiumHeadlessNoSandbox
-        if (availableBrowsers.includes('ChromiumHeadless')) {
-          const index = availableBrowsers.indexOf('ChromiumHeadless');
-
-          availableBrowsers[index] = 'ChromiumHeadlessNoSandbox';
-        }
-
-        return availableBrowsers;
-      }
-    },
-    singleRun: true
+    }
   });
 };

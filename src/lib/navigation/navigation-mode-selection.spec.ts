@@ -1,8 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
-import { ArchwizardModule } from '../archwizard.module';
 import { WizardComponent } from '../components/wizard.component';
 import { BaseNavigationMode } from './base-navigation-mode.interface';
+import {WizardStepComponent} from '../components/wizard-step.component';
 
 class CustomNavigationMode extends BaseNavigationMode {
   public isNavigable(wizard: WizardComponent, destinationIndex: number): boolean {
@@ -12,6 +12,10 @@ class CustomNavigationMode extends BaseNavigationMode {
 
 @Component({
   selector: 'aw-test-wizard',
+  imports: [
+    WizardComponent,
+    WizardStepComponent
+  ],
   template: `
     <aw-wizard>
       <aw-wizard-step stepTitle='Steptitle 1'>Step 1</aw-wizard-step>
@@ -28,6 +32,10 @@ class WizardTestComponent {
 
 @Component({
   selector: 'aw-wizard-with-custom-nav-mode',
+  imports: [
+    WizardComponent,
+    WizardStepComponent
+  ],
   template: `
     <aw-wizard [awNavigationMode]="customNavigationMode">
       <aw-wizard-step stepTitle='Steptitle 1'>Step 1</aw-wizard-step>
@@ -49,7 +57,6 @@ describe('NavigationMode', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [WizardTestComponent, WizardWithCustomNavigationModeComponent],
-      imports: [ArchwizardModule]
     }).compileComponents();
   }));
 

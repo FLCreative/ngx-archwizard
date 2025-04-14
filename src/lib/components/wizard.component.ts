@@ -11,6 +11,8 @@ import {NavigationMode} from '../navigation/navigation-mode.interface';
 import {WizardStep} from '../util/wizard-step.interface';
 import {MovingDirection} from '../util/moving-direction.enum';
 import {ConfigurableNavigationMode} from '../navigation/configurable-navigation-mode';
+import {NgClass, NgIf} from '@angular/common';
+import {WizardNavigationBarComponent} from './wizard-navigation-bar.component';
 
 /**
  * The `aw-wizard` component defines the root component of a wizard.
@@ -50,6 +52,11 @@ import {ConfigurableNavigationMode} from '../navigation/configurable-navigation-
 @Component({
   selector: 'aw-wizard',
   templateUrl: 'wizard.component.html',
+  imports: [
+    NgClass,
+    WizardNavigationBarComponent,
+    NgIf
+  ]
 })
 export class WizardComponent implements AfterContentInit {
   /**

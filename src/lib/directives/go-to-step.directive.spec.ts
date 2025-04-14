@@ -1,12 +1,19 @@
 import { Component, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { ArchwizardModule } from '../archwizard.module';
 import { WizardComponent } from '../components/wizard.component';
 import { GoToStepDirective } from './go-to-step.directive';
+import {WizardStepComponent} from '../components/wizard-step.component';
+import {OptionalStepDirective} from './optional-step.directive';
 
 @Component({
   selector: 'aw-test-wizard',
+  imports: [
+    WizardComponent,
+    WizardStepComponent,
+    GoToStepDirective,
+    OptionalStepDirective
+  ],
   template: `
     <aw-wizard>
       <aw-wizard-step stepTitle='Steptitle 1' [canExit]="canExit">
@@ -63,8 +70,7 @@ describe('GoToStepDirective', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [WizardTestComponent],
-      imports: [ArchwizardModule]
+      declarations: [WizardTestComponent]
     }).compileComponents();
   }));
 

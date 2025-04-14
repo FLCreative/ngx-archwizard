@@ -1,17 +1,25 @@
 import { Component, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { ArchwizardModule } from '../archwizard.module';
 import { checkClasses } from '../util/test-utils';
 import { WizardStep } from '../util/wizard-step.interface';
 import { WizardComponent } from './wizard.component';
+import {NavigationModeDirective} from '../directives/navigation-mode.directive';
+import {WizardStepComponent} from './wizard-step.component';
+import {NgIf} from '@angular/common';
 
 @Component({
   selector: 'aw-test-wizard',
+  imports: [
+    WizardComponent,
+    NavigationModeDirective,
+    WizardStepComponent,
+    NgIf
+  ],
   template: `
     <aw-wizard
       [disableNavigationBar]="disableNavigationBar" [defaultStepIndex]="defaultStepIndex"
-      [awNavigationMode] [navigateForward]="navigateForward" [navigateBackward]="navigateBackward">
+      [awNavigationMode]="" [navigateForward]="navigateForward" [navigateBackward]="navigateBackward">
       <aw-wizard-step stepTitle='Steptitle 1' *ngIf="showStep1">
         Step 1
       </aw-wizard-step>
@@ -25,8 +33,8 @@ import { WizardComponent } from './wizard.component';
   `
 })
 class WizardTestComponent {
-  public navigateForward = 'deny';
-  public navigateBackward = 'deny';
+  public navigateForward: 'allow' | 'visited' | 'deny' | null = 'deny';
+  public navigateBackward: 'allow' | 'deny' | null = 'deny';
 
   public disableNavigationBar = false;
 
@@ -47,8 +55,7 @@ describe('WizardComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [WizardTestComponent],
-      imports: [ArchwizardModule]
+      declarations: [WizardTestComponent]
     }).compileComponents();
   }));
 

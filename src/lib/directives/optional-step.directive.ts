@@ -1,4 +1,4 @@
-import {Directive, Host, Input, OnInit} from '@angular/core';
+import {booleanAttribute, Directive, Host, Input, OnInit} from '@angular/core';
 import {WizardStep} from '../util/wizard-step.interface';
 
 /**
@@ -29,7 +29,7 @@ import {WizardStep} from '../util/wizard-step.interface';
 export class OptionalStepDirective implements OnInit {
 
   // tslint:disable-next-line:no-input-rename
-  @Input('awOptionalStep')
+  @Input({transform: booleanAttribute, alias: 'awOptionalStep'})
   public optional = true;
 
   /**
