@@ -54,7 +54,7 @@ describe('WizardComponent with nested steps', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [WizardTestComponent]
+      imports: [WizardTestComponent]
     }).compileComponents();
   }));
 

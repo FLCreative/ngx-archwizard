@@ -39,7 +39,7 @@ describe('Wizard navigation with navigateForward=visited', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [WizardTestComponent]
+      imports: [WizardTestComponent]
     }).compileComponents();
   }));
 

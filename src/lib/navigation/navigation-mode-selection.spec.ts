@@ -56,7 +56,7 @@ describe('NavigationMode', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [WizardTestComponent, WizardWithCustomNavigationModeComponent],
+      imports: [WizardTestComponent, WizardWithCustomNavigationModeComponent],
     }).compileComponents();
   }));
 

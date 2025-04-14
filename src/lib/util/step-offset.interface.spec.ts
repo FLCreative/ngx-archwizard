@@ -60,7 +60,7 @@ describe('StepOffset', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [WizardTestComponent],
+      imports: [WizardTestComponent],
     }).compileComponents();
   }));
 

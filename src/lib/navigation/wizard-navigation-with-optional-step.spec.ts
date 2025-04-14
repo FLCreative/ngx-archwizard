@@ -39,7 +39,7 @@ describe('Wizard navigation with optional step', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [WizardTestComponent],
+      imports: [WizardTestComponent],
     }).compileComponents();
   }));
 

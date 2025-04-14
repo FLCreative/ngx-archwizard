@@ -41,7 +41,7 @@ describe('Wizard navigation with completion step', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [WizardTestComponent],
+      imports: [WizardTestComponent],
     }).compileComponents();
   }));
 

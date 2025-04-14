@@ -61,7 +61,7 @@ describe('EnableBackLinksDirective', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [WizardTestComponent]
+      imports: [WizardTestComponent]
     }).compileComponents();
   }));
 

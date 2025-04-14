@@ -7,6 +7,17 @@ import { WizardStepDirective } from './wizard-step.directive';
 import {OptionalStepDirective} from './optional-step.directive';
 
 @Component({
+  selector: 'aw-test-wizard-step',
+  template: `
+    Step 2
+  `
+})
+class WizardStepTestComponent {
+  constructor(@Host() private wizardStep: WizardStepDirective, wizard: WizardTestComponent) {
+  }
+}
+
+@Component({
   selector: 'aw-test-wizard',
   imports: [
     WizardComponent,
@@ -29,7 +40,6 @@ import {OptionalStepDirective} from './optional-step.directive';
   `
 })
 class WizardTestComponent {
-
   @ViewChild(WizardComponent)
   public wizard: WizardComponent;
 
@@ -47,19 +57,6 @@ class WizardTestComponent {
   }
 }
 
-@Component({
-  selector: 'aw-test-wizard-step',
-  template: `
-    Step 2
-  `
-})
-class WizardStepTestComponent {
-  constructor(@Host() private wizardStep: WizardStepDirective, wizard: WizardTestComponent) {
-    wizardStep.stepEnter.emit = direction => wizard.enterInto(direction, 2);
-    wizardStep.stepExit.emit = direction => wizard.exitFrom(direction, 2);
-  }
-}
-
 describe('WizardStepDirective', () => {
   let wizardTestFixture: ComponentFixture<WizardTestComponent>;
 
@@ -68,7 +65,7 @@ describe('WizardStepDirective', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [WizardTestComponent, WizardStepTestComponent]
+      imports: [WizardTestComponent, WizardStepTestComponent]
     }).compileComponents();
   }));
 

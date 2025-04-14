@@ -2,18 +2,22 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./out-tsc/spec",
-    "declaration": true,
-    "declarationMap": true,
     "types": [
-      "jasmine"
-    ]
+      "jasmine",
+      "node"
+    ],
+    "module": "commonjs",
+    "target": "es2022",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "allowJs": true
   },
   "files": [
     "src/test.ts"
   ],
   "include": [
-    "**/*.spec.ts",
-    "**/*.d.ts"
+    "src/**/*.spec.ts",
+    "src/**/*.d.ts"
   ],
   "angularCompilerOptions": {
     "enableIvy": true

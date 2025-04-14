@@ -50,7 +50,7 @@ describe('ResetWizardDirective', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [WizardTestComponent]
+      imports: [WizardTestComponent]
     }).compileComponents();
   }));
 

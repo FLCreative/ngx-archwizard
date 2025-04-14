@@ -58,7 +58,7 @@ describe('StepId', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [WizardTestComponent]
+      imports: [WizardTestComponent]
     }).compileComponents();
   }));
 
