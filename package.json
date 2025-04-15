@@ -1,20 +1,7 @@
 {
   "name": "ngx-archwizard",
   "version": "19.0.0",
-  "license": "MIT",
   "description": "An Angular 19+ module containing a wizard component and its supporting components and directives",
-  "homepage": "https://github.com/madoar/angular-archwizard",
-  "author": {
-    "name": "Marc Arndt",
-    "email": "marc.arndt@masimi.de"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/madoar/angular-archwizard"
-  },
-  "bugs": {
-    "url": "https://github.com/madoar/angular-archwizard/issues"
-  },
   "keywords": [
     "angular",
     "angular19",
@@ -25,6 +12,18 @@
     "wizard",
     "component"
   ],
+  "homepage": "https://github.com/FLCreative/ngx-archwizard",
+  "bugs": {
+    "url": "https://github.com/FLCreative/ngx-archwizard/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FLCreative/ngx-archwizard.git"
+  },
+  "license": "MIT",
+  "author": "FLCreative (fork de Marc Arndt <marc.arndt@masimi.de>)",
+  "type": "commonjs",
+  "main": "karma.conf.js",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -39,11 +38,8 @@
     "build:lib": "ng build ngx-archwizard",
     "publish:lib": "npm run build:lib && cd dist/ngx-archwizard && npm publish"
   },
-  "peerDependencies": {
-    "@angular/common": "^19.0.0",
-    "@angular/core": "^19.0.0",
-    "@angular/forms": "^19.0.0",
-    "rxjs": "^7.8.0"
+  "dependencies": {
+    "tslib": "^2.6.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^19.0.0",
@@ -84,7 +80,10 @@
     "typescript": ">=5.5 <5.9",
     "zone.js": "~0.15.0"
   },
-  "dependencies": {
-    "tslib": "^2.6.0"
+  "peerDependencies": {
+    "@angular/common": "^19.0.0",
+    "@angular/core": "^19.0.0",
+    "@angular/forms": "^19.0.0",
+    "rxjs": "^7.8.0"
   }
 }
