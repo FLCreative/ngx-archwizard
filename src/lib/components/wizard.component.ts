@@ -11,6 +11,7 @@ import {NavigationMode} from '../navigation/navigation-mode.interface';
 import {WizardStep} from '../util/wizard-step.interface';
 import {MovingDirection} from '../util/moving-direction.enum';
 import {ConfigurableNavigationMode} from '../navigation/configurable-navigation-mode';
+import {IWizardNavigation} from '../navigation/wizard-interface';
 import {NgClass, NgIf} from '@angular/common';
 import {WizardNavigationBarComponent} from './wizard-navigation-bar.component';
 
@@ -58,7 +59,7 @@ import {WizardNavigationBarComponent} from './wizard-navigation-bar.component';
     NgIf
   ]
 })
-export class WizardComponent implements AfterContentInit {
+export class WizardComponent implements AfterContentInit, IWizardNavigation {
   /**
    * A QueryList containing all [[WizardStep]]s inside this wizard
    */

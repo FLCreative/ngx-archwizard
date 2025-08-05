@@ -1,6 +1,6 @@
 {
-  "name": "ngx-archwizard",
-  "version": "19.0.0",
+  "name": "ngx-archwizard-updated",
+  "version": "19.0.2",
   "description": "An Angular 19+ module containing a wizard component and its supporting components and directives",
   "keywords": [
     "angular",
@@ -22,12 +22,12 @@
   },
   "license": "MIT",
   "author": "FLCreative (fork de Marc Arndt <marc.arndt@masimi.de>)",
-  "type": "commonjs",
-  "main": "karma.conf.js",
+  "type": "module",
+  "main": "dist/ngx-archwizard/index.js",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "npm run build-js && npm run extract-scss-variables && npm run build-css",
+    "build": "npm run build:lib",
     "build-js": "ng build",
     "extract-scss-variables": "extract-scss-variables ./dist/styles/archwizard.scss ./dist/styles/variables.scss",
     "build-css": "sass ./dist/styles/archwizard.scss ./dist/styles/archwizard.css",
@@ -36,7 +36,7 @@
     "lint": "eslint \"src/**/*.ts\" --fix",
     "e2e": "ng e2e",
     "build:lib": "ng build ngx-archwizard",
-    "publish:lib": "npm run build:lib && cd dist/ngx-archwizard && npm publish"
+    "publish:lib": "npm run build:lib && cd dist && npm publish"
   },
   "dependencies": {
     "tslib": "^2.6.0"
